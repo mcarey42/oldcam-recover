@@ -1,0 +1,17 @@
+# Never commit dumps, images or recovered media: they are someone's memories.
+*.bin
+*.BIN
+*.img
+*.avi
+*.AVI
+*.mp4
+*.json
+!tests/**/*.json
+recovered*/
+out*/
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+dist/

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oldcam-recover"
+version = "0.1.0"
+description = "Recover videos from raw NAND dumps of Zoran-based one-time-use camcorders (Pure Digital Saturn / CVS / Ritz)"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.22"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+oldcam-recover = "oldcam_recover.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+pythonpath = ["tests"]
