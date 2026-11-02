@@ -30,7 +30,8 @@ def _avi_input(src: str) -> list:
 
 def remux(src: str, dst: str) -> None:
     """Rewrite an AVI with a fresh index (no re-encoding)."""
-    subprocess.run([ffmpeg(), "-nostdin", "-v", "error", "-fflags", "+genpts", *_avi_input(src), "-c", "copy",
+    source = _avi_input(src)  # refuse non-AVI input before anything else
+    subprocess.run([ffmpeg(), "-nostdin", "-v", "error", "-fflags", "+genpts", *source, "-c", "copy",
                     _file(dst)], check=True)
 
 
@@ -39,7 +40,8 @@ def to_mp4(src: str, dst: str, start: dt.datetime) -> None:
     Apple Photos, Google Photos and most players look for it."""
     utc = start.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000000Z")
     local = start.strftime("%Y-%m-%dT%H:%M:%S%z")
-    subprocess.run([ffmpeg(), "-nostdin", "-v", "error", "-y", *_avi_input(src), "-map", "0:v:0", "-map", "0:a:0?",
+    source = _avi_input(src)  # refuse non-AVI input before anything else
+    subprocess.run([ffmpeg(), "-nostdin", "-v", "error", "-y", *source, "-map", "0:v:0", "-map", "0:a:0?",
                     "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p",
                     "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart+use_metadata_tags",
                     "-metadata", f"creation_time={utc}", "-metadata", f"com.apple.quicktime.creationdate={local}",

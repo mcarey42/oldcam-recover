@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Recover videos from raw NAND dumps of Zoran-based one-time-use camcorders (Pure Digital Saturn / CVS / Ritz)"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = ["numpy>=1.22"]
 
 [project.optional-dependencies]

@@ -28,7 +28,7 @@ turns that raw chip dump back into playable videos.
   first-timer, and reading the chip never changes what is stored on it.
 - A NAND programmer with a TSOP48 socket (for example XGecu T48/T56 or similar) that
   can read the **full page including the spare area**.
-- Python 3.9 or newer. ffmpeg is optional, for repairing cut-off clips and making
+- Python 3.10 or newer. ffmpeg is optional, for repairing cut-off clips and making
   MP4s for Apple Photos or Google Photos.
 
 ## Quick start
